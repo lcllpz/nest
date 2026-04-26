@@ -8,8 +8,15 @@ import {
   Query,
   Redirect,
   Req,
+  Res,
 } from '@nestjs/common';
 import { AppService } from './app.service';
+import type { Response } from 'express';
+
+export class CreateUserDto {
+  name: string;
+  age: number;
+}
 
 @Controller()
 export class AppController {
@@ -80,5 +87,35 @@ export class AppController {
       method: 'POST',
       body,
     };
+  }
+
+  // Request payloads
+  @Post('adduser')
+  createUser(@Body() dto: CreateUserDto) {
+    console.log('dto->', dto);
+    return {
+      ...dto,
+    };
+  }
+
+  // ## Query parameters
+  // @Get('cats')
+  // async findAll(
+  //   @Query('age') age: number,
+  //   @Query('breed') breed: string,
+  //   @Query() query: any,
+  // ) {
+  //   console.log(query);
+
+  //   return `This action returns all cats filtered by age: ${age} and breed: ${breed}`;
+  // }
+
+  // Library-specific approach#
+  @Get('cats')
+  findAll(@Res() response: Response) {
+    // 你可以使用响应对象来自定义响应
+    return response
+      .status(401)
+      .json({ message: 'This is the custom response handling with @Res()' });
   }
 }
