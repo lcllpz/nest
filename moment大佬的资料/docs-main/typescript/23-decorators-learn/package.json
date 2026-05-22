@@ -1,0 +1,30 @@
+{
+  "name": "23-decorators-learn",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TypeScript 装饰器学习项目（对应 23. 装饰器.md）",
+  "scripts": {
+    "01:class-basic": "tsx src/examples/01-class-basic.ts",
+    "02:class-add-properties": "tsx src/examples/02-class-add-properties.ts",
+    "03:class-replace": "tsx src/examples/03-class-replace.ts",
+    "04:class-monitor": "tsx src/examples/04-class-monitor.ts",
+    "05:class-singleton": "tsx src/examples/05-class-singleton.ts",
+    "06:class-mixins": "tsx src/examples/06-class-mixins.ts",
+    "07:class-timing": "tsx src/examples/07-class-timing.ts",
+    "08:method-log": "tsx src/examples/08-method-log.ts",
+    "09:method-validate": "tsx src/examples/09-method-validate.ts",
+    "10:accessor": "tsx src/examples/10-accessor.ts",
+    "11:property": "tsx src/examples/11-property.ts",
+    "12:parameter": "tsx src/examples/12-parameter.ts",
+    "13:execution-order": "tsx src/examples/13-execution-order.ts",
+    "14:dependency-injection": "tsx src/examples/14-dependency-injection.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.2.2"
+  }
+}

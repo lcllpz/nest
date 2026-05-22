@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+  <script>
+    const socket = io();
+    socket.on('connect', () => {
+      console.log('Connected to server');
+
+      socket.emit('chatMessage', 'Hello World', (data)=>{
+        console.log('Server response:', data);
+      });
+
+      socket.emit('createChat', {name: 'jack'}, (data)=>{
+        console.log('createChat response:', data);
+      });
+
+      socket.on('aaa', (data)=>{
+        console.log('aaa response:', data);
+      });
+    });
+
+    socket.on('disconnect', () => {
+      console.log('Disconnected from server');
+    });
+    
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

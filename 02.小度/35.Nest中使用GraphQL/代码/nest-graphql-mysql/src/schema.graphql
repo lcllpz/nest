@@ -1,0 +1,42 @@
+type Employee {
+  id: Int
+  name: String
+  sex: String
+  age: Int
+  department: Department
+}
+
+type Department {
+  id: Int
+  name: String
+  employees: [Employee]
+}
+
+type Query {
+  employees: [Employee]
+  departments: [Department]
+  employeesByDepartmentName(name: String!): [Employee]
+}
+
+type Res {
+  success: Boolean
+  id: Int
+}
+
+input CreateEmployeeInput {
+  name: String
+  age: Int
+  sex: String
+  department: DepartmentInput
+}
+input DepartmentInput {
+  id: Int
+}
+
+type Mutation {
+  addEmployee(input: CreateEmployeeInput): Res
+
+  updateEmployee(id: Int!, name: String!, age: Int!, sex: String!): Res
+
+  deleteEmployee(id: Int!): Res
+}

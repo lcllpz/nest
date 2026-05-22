@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/yingside/Desktop/nest-logger/src/logs/.9c0b1ba2e61a70085d543355f3c7c9d851e9ea94-audit.json",
+    "files": [
+        {
+            "date": 1741146531931,
+            "name": "/Users/yingside/Desktop/nest-logger/src/logs/app-2025-03-05.info.log",
+            "hash": "49316e5dd0ff696749517de6fce97e733d55c041e64b093c1f3bbebca817eb2e"
+        }
+    ],
+    "hashType": "sha256"
+}
