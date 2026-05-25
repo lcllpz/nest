@@ -6,15 +6,16 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
   // UseGuards,
 } from '@nestjs/common';
 import { PersonService } from './person.service';
 import { CreatePersonDto } from './dto/create-person.dto';
 import { UpdatePersonDto } from './dto/update-person.dto';
-// import { PersonGuard } from './person.guard';
+import { PersonGuard } from './person.guard';
 
 @Controller('person')
-// @UseGuards(PersonGuard)
+@UseGuards(PersonGuard)
 export class PersonController {
   constructor(private readonly personService: PersonService) {}
 
@@ -22,6 +23,8 @@ export class PersonController {
   create(@Body() createPersonDto: CreatePersonDto) {
     return this.personService.create(createPersonDto);
   }
+
+  
 
   @Get()
   // @UseGuards(PersonGuard)

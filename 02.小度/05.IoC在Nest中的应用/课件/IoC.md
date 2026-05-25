@@ -6,7 +6,7 @@
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
-	// ......
+  // ......
 }
 ```
 
@@ -17,7 +17,7 @@ export class AppController {
 ```typescript
 @Injectable()
 export class AppService {
- 	//......
+  //......
 }
 ```
 
@@ -53,6 +53,8 @@ export class AppModule {}
 export class AppModule {}
 ```
 
+### 构造器注入
+
 比如我们这里直接引入了`UserModule`，那么在**User模块**中，我们是这样的：
 
 ```typescript
@@ -67,7 +69,7 @@ export class UserModule {}
 **UserController类**中：
 
 ```typescript
-@Controller('user')
+@Controller("user")
 export class UserController {
   constructor(private readonly userService: UserService) {}
   @Get()
@@ -83,7 +85,7 @@ export class UserController {
 @Injectable()
 export class UserService {
   findAll(): string {
-    return 'This action returns all users';
+    return "This action returns all users";
   }
 }
 ```
@@ -140,13 +142,13 @@ export class AppModule {}
 
 **通过 `provide` 指定 `token`，通过 `useClass` 指定对象的类**，Nest 会自动对它做实例化后用来注入。
 
- AppController 的**构造器里参数**里声明了 `AppService` 的依赖，就会自动注入
+AppController 的**构造器里参数**里声明了 `AppService` 的依赖，就会自动注入
 
 ```typescript
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
-  
+
   // ......
 }
 ```
@@ -154,11 +156,11 @@ export class AppController {
 如果不想用构造器注入，也可以**属性注入**
 
 ```typescript
-@Controller('admin')
+@Controller("admin")
 export class AppController {
   @Inject(AppService)
   private appService: AppService;
-	
+
   // ......
 }
 ```
@@ -175,7 +177,7 @@ export class AppController {
   controllers: [AppController],
   providers: [
     {
-      provide: 'app_service',
+      provide: "app_service",
       useClass: AppService,
     },
   ],
@@ -188,7 +190,7 @@ export class AppModule {}
 ```typescript
 @Controller()
 export class AppController {
-  @Inject('app_service')
+  @Inject("app_service")
   private appService: AppService;
 }
 ```
@@ -198,7 +200,7 @@ export class AppController {
 ```typescript
 @Controller()
 export class AppController {
-  constructor(@Inject('app_service') private readonly appService: AppService) {}
+  constructor(@Inject("app_service") private readonly appService: AppService) {}
 }
 ```
 
@@ -214,13 +216,13 @@ export class AppController {
   controllers: [AppController],
   providers: [
     {
-      provide: 'app_service',
+      provide: "app_service",
       useClass: AppService,
     },
     {
-      provide: 'car',
+      provide: "car",
       useValue: {
-        brand: 'BYD',
+        brand: "BYD",
         price: 100000,
       },
     },
@@ -234,13 +236,13 @@ export class AppModule {}
 ```typescript
 @Controller()
 export class AppController {
-  @Inject('app_service')
+  @Inject("app_service")
   private appService: AppService;
 
-  @Inject('car')
+  @Inject("car")
   private car: { brand: string; price: number };
 
-  @Get('car')
+  @Get("car")
   hello(): string {
     return `Hello, I have a ${this.car.brand} car, it's price is ${this.car.price}`;
   }
@@ -259,18 +261,18 @@ const createRandomFactory = () => Math.random();
   controllers: [AppController],
   providers: [
     {
-      provide: 'app_service',
+      provide: "app_service",
       useClass: AppService,
     },
     {
-      provide: 'car',
+      provide: "car",
       useValue: {
-        brand: 'BYD',
+        brand: "BYD",
         price: 100000,
       },
     },
     {
-      provide: 'random',
+      provide: "random",
       useFactory: createRandomFactory,
     },
   ],
@@ -283,12 +285,12 @@ export class AppModule {}
 ```typescript
 @Controller()
 export class AppController {
-	// ......
+  // ......
 
-  @Inject('random')
+  @Inject("random")
   private random: number;
 
-  @Get('random')
+  @Get("random")
   randomNum(): number {
     return this.random;
   }
@@ -331,20 +333,20 @@ const createRandomFactory = (
   controllers: [AppController],
   providers: [
     {
-      provide: 'app_service',
+      provide: "app_service",
       useClass: AppService,
     },
     {
-      provide: 'car',
+      provide: "car",
       useValue: {
-        brand: 'BYD',
+        brand: "BYD",
         price: 100000,
       },
     },
     {
-      provide: 'random',
+      provide: "random",
       useFactory: createRandomFactory,
-      inject: ['car', 'app_service'],
+      inject: ["car", "app_service"],
     },
   ],
 })
@@ -352,6 +354,3 @@ export class AppModule {}
 ```
 
 通过 **inject**注入了两个`token`，`'car'`和 `'app_service'`这两个我们在之前都已经注册到了容器中
-
-
-

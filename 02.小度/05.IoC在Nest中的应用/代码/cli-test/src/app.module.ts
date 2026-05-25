@@ -17,7 +17,9 @@ const createRandomFactory = (
 }
 
 @Module({
-  imports: [UserModule, PersonModule],
+  imports: [
+    UserModule, 
+    PersonModule],
   controllers: [AppController],
   providers: [
     {

@@ -53,6 +53,9 @@ export class UserController {
     res.end('other');
   }
 
+  // 要放在最后，因为Nest是从上往下匹配的
+  // 如果放在前面，就会先匹配到 :id 路由，然后就不会匹配到 findOne 方法
+  // 所以 :id 路由要放在最后
   @Get(':id')
   findOne(@Param('id') id: string) {
     console.log('id====', id);

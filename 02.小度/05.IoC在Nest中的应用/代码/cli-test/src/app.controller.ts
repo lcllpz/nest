@@ -9,7 +9,9 @@ export class AppController {
   @Inject('random')
   private random: number;
 
-  constructor(private readonly appService: AppService) {}
+  // constructor(private readonly appService: AppService) {}
+  @Inject(AppService)
+  private appService: AppService;
 
   @Get('list')
   getAdminList() {
@@ -46,5 +48,9 @@ export class AppController {
       name: 'jack',
       age: 19,
     };
+  }
+  @Get('car')
+  getCar(): string {
+    return `Hello, I have a ${this.car.brand} car, it's price is ${this.car.price}`;
   }
 }

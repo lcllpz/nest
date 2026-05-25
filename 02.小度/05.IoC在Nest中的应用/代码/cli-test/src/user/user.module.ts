@@ -6,10 +6,17 @@ import { UserService } from './user.service';
   imports: [],
   controllers: [UserController],
   providers: [
+    // 1.构造器注入
+    // UserService,
     {
-      provide: 'user_service',
+      provide: UserService,
       useClass: UserService,
     },
+    // 2.属性注入
+    // {
+    //   provide: 'user_service',
+    //   useClass: UserService,
+    // },
   ],
 })
 export class UserModule {}
