@@ -24,10 +24,10 @@ import { MyExceptionFilter } from './my-exception.filter';
     //   provide: APP_PIPE,
     //   useClass: ParseIntPipe,
     // },
-    // {
-    //   provide: APP_FILTER,
-    //   useClass: MyExceptionFilter,
-    // },
+    {
+      provide: APP_FILTER,
+      useClass: MyExceptionFilter,
+    },
   ],
 })
 export class AppModule {}

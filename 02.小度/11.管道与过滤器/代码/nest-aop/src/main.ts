@@ -13,6 +13,6 @@ async function bootstrap() {
   // app.useGlobalInterceptors(new TimeoutInterceptor());
   // app.useGlobalPipes(new ParseIntPipe());
   // app.useGlobalFilters(new MyExceptionFilter());
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 4000);
 }
 bootstrap();

@@ -21,7 +21,8 @@ import { UpdatePersonDto } from './dto/update-person.dto';
 import { AuthInterceptor } from 'src/auth.interceptor';
 import { from } from 'rxjs';
 import { MyExceptionFilter } from 'src/my-exception.filter';
-// import { ValidatePipe } from 'src/validate.pipe';
+import { ValidatePipe } from 'src/validate.pipe';
+import { ErrorHttpStatusCode } from '@nestjs/common/utils/http-error-by-code.util';
 // import { TimeoutInterceptor } from 'src/timeout.interceptor';
 // import { PersonGuard } from './person.guard';
 
@@ -52,10 +53,38 @@ export class PersonController {
     return from(['hello', 'worldA', 'abc']);
   }
 
+  // @Get(':id')
+  // findOne(@Param('id', ValidatePipe) id: string) {
+  //   return this.personService.findOne(+id);
+  // }
+  // @Get(':id')
+  // findOne(@Param('id', ParseIntPipe) id: number) {
+  //   return this.personService.findOne(+id);
+  // }
+
+  //  @Get(':id')
+  // findOne(@Param('id', new ParseIntPipe({ 
+  //   errorHttpStatusCode: HttpStatus.BAD_REQUEST   }) ) id: number) {
+  //   return this.personService.findOne(+id);
+  // }
+  // @Get(':id')
+  // findOne(@Param('id', new ParseIntPipe({ 
+  //   exceptionFactory:(error: string) => {
+  //     throw new HttpException('参数id错误', HttpStatus.BAD_REQUEST);
+  //   }
+  //  }) ) id: number) {
+  //   return this.personService.findOne(+id);
+  // }
+
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.personService.findOne(+id);
+  // @UseFilters(MyExceptionFilter)
+  remove(
+    @Param('id', ParseIntPipe)
+    id: string,
+  ) {
+    return this.personService.remove(+id);
   }
+
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePersonDto: UpdatePersonDto) {
@@ -77,12 +106,12 @@ export class PersonController {
   //   return this.personService.remove(+id);
   // }
 
-  @Delete(':id')
-  @UseFilters(MyExceptionFilter)
-  remove(
-    @Param('id', ParseIntPipe)
-    id: string,
-  ) {
-    return this.personService.remove(+id);
-  }
+  // @Delete(':id')
+  // @UseFilters(MyExceptionFilter)
+  // remove(
+  //   @Param('id', ParseIntPipe)
+  //   id: string,
+  // ) {
+  //   return this.personService.remove(+id);
+  // }
 }
