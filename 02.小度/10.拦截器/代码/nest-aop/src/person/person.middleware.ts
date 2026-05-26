@@ -7,9 +7,9 @@ export class PersonMiddleware implements NestMiddleware {
   @Inject(PersonService)
   private personService: PersonService;
   use(req: Request, res: Response, next: NextFunction) {
-    console.log('before 中间件 ---' + req.url);
-    console.log('调用注入的服务 --- ' + this.personService.findAll());
+    // console.log('before 中间件 ---' + req.url);
+    // console.log('调用注入的服务 --- ' + this.personService.findAll());
     next();
-    console.log('after 中间件 ---' + res.statusCode);
+    // console.log('after 中间件 ---' + res.statusCode);
   }
 }

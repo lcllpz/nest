@@ -14,8 +14,8 @@ export class PersonGuard implements CanActivate {
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
-    console.log('person guard');
-    console.log('调用注入的守卫 ' + this.personService.findAll());
+    // console.log('person guard');
+    // console.log('调用注入的守卫 ' + this.personService.findAll());
     return true;
   }
 }

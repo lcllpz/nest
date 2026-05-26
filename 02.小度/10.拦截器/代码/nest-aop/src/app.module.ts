@@ -5,6 +5,7 @@ import { PersonModule } from './person/person.module';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { PersonGuard } from './person/person.guard';
 import { TimeoutInterceptor } from './timeout.interceptor';
+import { GlInterceptor } from './gl.interceptor';
 
 @Module({
   imports: [PersonModule],
@@ -18,6 +19,10 @@ import { TimeoutInterceptor } from './timeout.interceptor';
     {
       provide: APP_INTERCEPTOR,
       useClass: TimeoutInterceptor,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: GlInterceptor,
     },
   ],
 })
