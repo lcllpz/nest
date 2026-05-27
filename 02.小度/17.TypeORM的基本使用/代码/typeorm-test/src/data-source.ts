@@ -4,11 +4,11 @@ import { User } from "./entity/User";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
-  database: "typeorm_test",
+  database: "learn",
   host: "localhost",
   port: 3306,
   username: "root",
-  password: "123456",
+  password: "root",
   synchronize: true,
   logging: true,
   entities: [User],

@@ -5,15 +5,10 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    name: "u_name",
-    length: 100,
-  })
+  @Column({ length: 100 })
   name: string;
 
-  @Column({
-    name: "u_age",
-  })
+  @Column()
   age: number;
 
   @Column({ length: 11 })
@@ -25,3 +20,34 @@ export class User {
   @Column("double", { default: 0 })
   other: number;
 }
+// @Entity()
+// export class User {
+//   @PrimaryGeneratedColumn()
+//   id: number;
+
+//   @Column({
+//     name: "u_name",
+//     length: 100,
+//   })
+//   name: string;
+
+//   @Column({
+//     name: "u_nickname",
+//     length: 100,
+//   })
+//   nickname: string;
+
+//   @Column()
+//   age: number;
+
+//   @Column({ length: 11 })
+//   phone: string;
+
+//   @Column("text")
+//   desc: string;
+
+//   @Column("double", {
+//     default: 0,
+//   })
+//   other: number;
+// }

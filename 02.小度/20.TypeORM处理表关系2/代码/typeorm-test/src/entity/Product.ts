@@ -1,8 +1,14 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { Order } from "./Order";
 
 @Entity()
-export class Product { 
+export class Product {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -14,12 +20,12 @@ export class Product {
     name: "order_products",
     joinColumn: {
       name: "product_id",
-      referencedColumnName: "id"
+      referencedColumnName: "id",
     },
     inverseJoinColumn: {
       name: "order_id",
-      referencedColumnName: "id"
-    }
+      referencedColumnName: "id",
+    },
   })
   orders: Order[];
 }

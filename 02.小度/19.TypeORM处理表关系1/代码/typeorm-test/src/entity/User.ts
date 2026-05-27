@@ -24,7 +24,7 @@ export class User {
   other: number;
 
   @OneToOne(() => IdCard, (idCard) => idCard.user, {
-    cascade: true
+    cascade: true,
   })
   card: IdCard;
 }

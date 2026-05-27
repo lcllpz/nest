@@ -15,11 +15,10 @@ export class CustomGuard implements CanActivate {
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
-    const metaData = this.reflector.get('MyClass', context.getClass());
-    console.log(metaData);
-
-    const users = this.reflector.get('SetUser', context.getHandler());
-    console.log(users);
+    // const metaData = this.reflector.get('MyClass', context.getClass());
+    // console.log(metaData);
+    const users = this.reflector.get('MySetUser', context.getHandler());
+    console.log("MySetUser-data", users);
     return true;
   }
 }

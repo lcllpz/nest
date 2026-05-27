@@ -7,7 +7,7 @@ export class User {
 
   @Column()
   name: string;
-
+ 
   @Column()
   sex: string;
 
