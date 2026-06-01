@@ -34,6 +34,7 @@ export class ShoppingCartService {
     // 先从缓存中获取数据，没有再到mysql中查询获取
     const data = await this.redisClient.get(`cart:${id}`);
     const cartEntity = data ? JSON.parse(data) : null;
+    console.log('cartEntity', cartEntity);
 
     if (cartEntity) {
       return cartEntity;

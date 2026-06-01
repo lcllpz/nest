@@ -74,12 +74,12 @@ export class UserController {
   // @UseGuards(LoginGuard)
   @UseGuards(AuthGuard('jwt'))
   getUserInfo() {
-    return '获取用户详细信息';
+    return '-------44-->789获取用户详细信息 info';
   }
 
   @Get('list')
   @UseGuards(LoginGuard)
   getUserList() {
-    return '获取用户列表';
+    return '1获取用户列表';
   }
 }

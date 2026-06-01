@@ -6,6 +6,8 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private authService: AuthService) {
+    console.log('JwtStrategy constructor');
+    console.log(authService, 'authService');
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
@@ -14,6 +16,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   validate(payload: any) {
+    console.log(payload, 'payload');
     return { username: payload.username, password: payload.sub };
   }
 }

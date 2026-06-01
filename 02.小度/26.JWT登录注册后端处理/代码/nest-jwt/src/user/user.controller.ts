@@ -37,12 +37,14 @@ export class UserController {
           username: result.username,
         },
       });
-
       res.header('Authorization', token);
 
       return {
         message: '登录成功',
-        data: result,
+        data: {
+          token: token,
+          ...result
+        },
         code: 200,
       };
     } else {

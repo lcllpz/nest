@@ -63,8 +63,10 @@ export class AppController {
 
   @Get('session2')
   getSession2(@Req() req: Request) {
+    // 通过Request获取session、设置
     const session = req.session;
     console.log(session);
     session.views = session.views ? session.views + 1 : 1;
+    return session.views;
   }
 }
