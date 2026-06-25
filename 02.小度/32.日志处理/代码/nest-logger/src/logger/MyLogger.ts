@@ -1,3 +1,4 @@
+// 2. 使用winston记录日志
 import { Injectable, LoggerService } from '@nestjs/common';
 import 'winston-daily-rotate-file';
 import * as chalk from 'chalk';
@@ -86,13 +87,30 @@ export class MyLogger implements LoggerService {
   }
 }
 
-// 日志级别
-// const levels = {
-//   error: 0,
-//   warn: 1,
-//   info: 2,
-//   http: 3,
-//   verbose: 4,
-//   debug: 5,
-//   silly: 6,
+// // 日志级别
+// // const levels = {
+// //   error: 0,
+// //   warn: 1,
+// //   info: 2,
+// //   http: 3,
+// //   verbose: 4,
+// //   debug: 5,
+// //   silly: 6,
+// // }
+
+// 1. 手动记录
+
+// import { ConsoleLogger, Injectable } from '@nestjs/common';
+
+// @Injectable()
+// export class MyLogger extends ConsoleLogger {
+//   error(message: any, trace?: string, context?: string) {
+//     message = message + ' - 当前环境: dev';
+//     super.error(message, trace, context);
+//   }
+
+//   log(message: any, context?: string) {
+//     message = message + ' - 当前环境: dev';
+//     super.log(message, context);
+//   }
 // }

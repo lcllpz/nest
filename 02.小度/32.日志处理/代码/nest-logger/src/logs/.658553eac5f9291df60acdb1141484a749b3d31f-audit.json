@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "E:\\learn\\nest\\02.小度\\32.日志处理\\代码\\nest-logger\\src\\logs\\.658553eac5f9291df60acdb1141484a749b3d31f-audit.json",
+    "files": [
+        {
+            "date": 1780368515283,
+            "name": "E:\\learn\\nest\\02.小度\\32.日志处理\\代码\\nest-logger\\src\\logs\\app-2026-06-02.info.log",
+            "hash": "d79d73a3ad9798a119990d56a7931fbdc25eb171917f590ddad17fb3fdf21e0f"
+        }
+    ],
+    "hashType": "sha256"
+}

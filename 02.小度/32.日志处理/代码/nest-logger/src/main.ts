@@ -8,6 +8,7 @@ async function bootstrap() {
     // bufferLogs: true,
     logger: false,
   });
+  //  使用自定义Logger
   app.useLogger(app.get(MyLogger));
   await app.listen(process.env.PORT ?? 3000);
 }

@@ -9,6 +9,10 @@ export class AppService {
   private logger: MyLogger;
 
   getHello(): string {
+    // 1.手动日志
+    // this.logger.error('getHello error!');
+    // this.logger.log('getHello log!');
+    // 2. 利用winston记录日志
     this.logger.info('getHello info!', AppService.name);
     this.logger.warn('getHello warn!', AppService.name);
     this.logger.error('getHello error!', AppService.name);

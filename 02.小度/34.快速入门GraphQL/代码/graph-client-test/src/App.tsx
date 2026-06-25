@@ -18,7 +18,7 @@ const addEmployee = gql`
       success
     }
   }
-`
+`;
 type Employee = {
   id: string;
   name: string;
@@ -34,17 +34,17 @@ function App() {
   const { loading, error, data } = useQuery<EmployeeList>(getEmployees);
 
   const [createEmployee] = useMutation(addEmployee, {
-    refetchQueries: [getEmployees]
-  })
+    refetchQueries: [getEmployees],
+  });
 
-  async function onClick() { 
+  async function onClick() {
     await createEmployee({
       variables: {
-        "name": "lucy",
-        "age": 30,
-        "sex": "女"
-      }
-    })
+        name: "lucy",
+        age: 30,
+        sex: "女",
+      },
+    });
   }
 
   if (loading) return <p>Loading...</p>;
@@ -56,12 +56,11 @@ function App() {
         {data?.employees?.map((emp) => {
           return (
             <li key={emp.id}>
-              { emp.name } --- { emp.age } --- {emp.sex}
+              {emp.name} --- {emp.age} --- {emp.sex}
             </li>
           );
         })}
       </ul>
-      
     </>
   );
 }

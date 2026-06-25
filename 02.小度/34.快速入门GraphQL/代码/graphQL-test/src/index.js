@@ -14,7 +14,7 @@ const typeDefs = `
     name: String
     employees: [Employee]
   }
-
+    
   type Query {
     employees: [Employee],
     departments: [Department],
@@ -70,21 +70,21 @@ const departments = [
   },
 ];
 
-async function addEmployee(_, { name, age, sex }) { 
+async function addEmployee(_, { name, age, sex }) {
   employees.push({
     id: Math.ceil(Math.random() * 100) + "",
     name,
     age,
-    sex
-  })
+    sex,
+  });
 
   return {
     success: true,
-    id: Math.ceil(Math.random() * 100) + ""
-  }
+    id: Math.ceil(Math.random() * 100) + "",
+  };
 }
 
-async function updateEmployee(_, { id, name, age, sex }) { 
+async function updateEmployee(_, { id, name, age, sex }) {
   employees.forEach((item) => {
     if (item.id === id) {
       item.name = name;
@@ -94,16 +94,16 @@ async function updateEmployee(_, { id, name, age, sex }) {
   });
   return {
     success: true,
-    id
-  }
+    id,
+  };
 }
 
 async function deleteEmployee(_, { id }) {
   employees = employees.filter((item) => item.id !== id);
   return {
     success: true,
-    id
-  }
+    id,
+  };
 }
 
 // 定义resolvers
@@ -111,17 +111,17 @@ const resolvers = {
   Query: {
     employees: () => employees,
     departments: () => departments,
-    employeesByDepartmentName: async (_, { name }) => { 
+    employeesByDepartmentName: async (_, { name }) => {
       console.log(name);
       await "异步查询操作";
       return name === "技术部" ? employees : [];
-    }
+    },
   },
   Mutation: {
     addEmployee,
     updateEmployee,
-    deleteEmployee
-  }
+    deleteEmployee,
+  },
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });
